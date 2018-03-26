@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring email sender</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<!--/*@thymesVar id="email" type="com.fd.javaspringemail.dto.EmailDTO"*/-->
+<h1>Send email</h1>
+
+<label th:text="${exception}"></label>
+
+<form th:object="${email}" th:action="@{/email/send}" enctype="multipart/form-data" method="post">
+    <label>To:</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="sizing-addon2">@</span>
+        <input th:field="*{to}" type="text" class="form-control" placeholder="Reciver" aria-describedby="sizing-addon2">
+    </div>
+
+    <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" th:field="*{subject}" class="form-control" id="subject">
+    </div>
+
+    <div class="form-group">
+        <label for="comment">Content</label>
+        <textarea th:field="*{content}" class="form-control" rows="5" id="comment"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-info">Send</button>
+
+
+    <div class="form-group">
+        <label for="atachments">Attachments:</label>
+        <input type="file" name="files" multiple="multiple" id="atachments"/>
+    </div>
+
+</form>
+</body>
+</html>
