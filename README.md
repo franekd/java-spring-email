@@ -8,11 +8,13 @@ Simple example of sending e-mail using spring-email
 ## How to use
 
 ### Compile
-``
-mvn clean install
-``
+
+`mvn clean package`
+
 
 ### Run
-``
-mvn spring-boot:run
-``
+Run website and mysql with docker:
+
+`docker-compose build`
+
+`docker-compose up`
