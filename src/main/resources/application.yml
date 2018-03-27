@@ -1,0 +1,13 @@
+spring:
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    show-sql: true
+
+  datasource: # javaSpringEmailDb - name of db
+    url: jdbc:mysql://db:3306/javaSpringEmailDb?useSSL=false&createDatabaseIfNotExist=true
+    username: root # should create new user
+    password: password
